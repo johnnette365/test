@@ -1,0 +1,476 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}PARADIGM SHIFT IN MARITIME WARFARE{% endblock title %} 
+
+
+{% block meta_tags %} 
+{% endblock meta_tags %}
+
+
+
+
+{% block page_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">        
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        
+      
+
+
+.col-lg-8 {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+}
+
+.col-lg-4 {
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+}
+
+.news-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.news-image {
+    width: 100%;
+    max-width: 40%;
+    height: auto;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 20px;
+    background: white;
+    flex: 1;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+    flex-wrap: wrap;
+}
+
+.category {
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.date {
+    color: #555;
+    text-decoration: none;
+}
+.title{
+    font-size: 25px;
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+}
+
+h2 {
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.news-title {
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+}
+
+
+.news-title:hover {
+    color: #333;
+    text-decoration: underline;
+
+
+
+}
+
+
+
+
+.news-text {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+
+
+
+    font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+
+}
+
+
+
+
+
+
+
+
+.news-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+
+
+
+    font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.news-image-small {
+    width: 100%;
+    max-width: 50%;
+    height: auto;
+    margin: 10px 0;
+}
+
+.left {
+    float: left;
+    margin-right: 15px;
+}
+
+.right {
+    float: right;
+    margin-left: 15px;
+}
+
+.sidebar-section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.ad-container {
+    text-align: center;
+    background: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.ad-image {
+    width: 100%;
+    height: auto;
+}
+
+.news-list {
+    background: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.news-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.news-thumb {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+}
+
+.news-content {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+}
+
+.newsletter-container {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.newsletter-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+.newsletter-button {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.newsletter-button:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .col-lg-8, .col-lg-4 {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-wrapper {
+        flex-direction: column;
+    }
+    
+    .news-image {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .news-image-small {
+        width: 100%;
+    }
+    
+    .left, .right {
+        float: none;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-title {
+        font-size: 20px;
+    }
+    
+    .news-text {
+        font-size: 14px;
+    }
+    
+    .category {
+        padding: 3px 7px;
+        font-size: 12px;
+    }
+    
+    .news-meta {
+        font-size: 12px;
+    }
+}
+
+
+   </style>
+
+{% endblock page_css %}
+
+
+{% block content %}
+
+
+
+
+
+<body>
+
+
+
+
+
+    <!-- News With Sidebar Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="news-wrapper">
+                         <h1 class="title">PARADIGM SHIFT IN MARITIME WARFARE</h1>
+                        <h2>By CDR. Anil Kumar Mehta (R)</h2>
+                        <h2>About the Author</h2>
+                        <p class="news-text">In the present-day scenario, Unmanned Aerial Systems (UAS) are offering comprehensive maritime solutions that comply with every country's operational needs .</p>
+                        <img class="news-image" src="{% static '/img/para.jpg' %}" alt="News Image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <a class="category" href="#">Technologies</a>
+                                <a class="date" href="#">Jan 01, 2045</a>
+                            </div>
+                            <p class="news-text" style="font-weight: bolder;">Commander Anil Kumar Mehta was commissioned in the Indian Navy on 01 Jul 1990. He is a qualified Gunnery Officer, Ships’ Diving Officer and UAV observer. He is presently posted in INS Garuda/INAS 342 as Staff Observer. He is presently an independent advisor in maritime warfare affairs. </p>
+                            {% comment %} <h3 class="news-subtitle">Lorem ipsum dolor sit amet elit</h3> {% endcomment %}
+                            <img class="news-image-small left" src="{% static '/img/para2.jpg' %}" alt="Small Image">
+                            <p class="news-text">The degree of maritime supremacy, where the opposing force is incapable of effective interference, will change with the role of Unmanned Combat Aerial Vehicles (UCAVs) as these become key components in conflicts. Worldwide, there will be many UCAVs customized for maritime applications for naval forces, adding another dimension in determining the outcome of battles amidst challenging technologies. Presently, maritime missions with UAVs (Unmanned Aerial Vehicles) are primarily focused on ISR (Intelligence, Surveillance, and Reconnaissance). Developing a stealthy long-range drone with a weapon payload that can go beyond and survive against modern air defenses is a challenge. However, UCAVs show promise in achieving these missions.
+                            Navies around the world have decided to adopt an Unmanned Carrier-Launched Surveillance and Strike (UCLASS) system. The UCLASS is being designed to provide Navy carriers with long-range surveillance and strike capabilities to target terrorists (Anti-Piracy). UCAVs would be capable of rapid deployment from carriers that could stay out of the range of threats. A persistent surveillance capability that could also strike vital command & control and air defense sites if required could shift the paradigm of strategies/patterns/theories of Maritime Warfare.</p>
+
+                            <h5 class="news-subtitle">UAVs Maritime Missions</h5>
+                            <img class="news-image-small right" src="{% static '/img/para3.png' %}" alt="Small Image">
+                            <p class="news-text">In the present-day scenario, Unmanned Aerial Systems (UAS) are offering comprehensive maritime solutions that comply with every country's operational needs. There is a need to positively and unambiguously identify, in time, threats that originate in the maritime arena and prevent hostile and illegal activities in territorial waters or against areas within their range. Such activities may include illegal fishing, piracy, terror activities, and any other actions aimed against a country's sovereignty. These threats can be small or large targets with various radar cross-sections and thus require means with pinpoint detection and identification capabilities.</p>
+                            <p class="news-text">Maritime UAV systems are providing Over The Horizon Targeting (OTHT) in security, paramilitary, and wartime missions. Maritime UAVs are being employed for real-time battle damage assessment. During peacetime, the maritime UAV system prevents the penetration of any seaborne hostile intruder, protects the country's rights and interests in the Economic Exclusive Zone (EEZ), and supports Search and Rescue operations. In wartime, the maritime UAV system achieves naval superiority, assists in the destruction of enemy naval forces, defends coastlines, and supports ground operations (littoral warfare). UAV systems are capable of carrying multiple payloads and sensors simultaneously and provide an array of intelligence-gathering capabilities from target detection to positive identification.</p>
+                            <h5 class="news-subtitle"></h5>
+                            <img class="news-image-small right" src="{% static '/img/PARADIGM.jpg' %}"alt="Small Image">
+                            <p class="news-text">UAVs with maritime capabilities enable total mission control from both land-based and sea-based locations. The control of UAVs can be transferred from land to sea and vice versa in real time. With SATCOM-controlled UAVs, the scanning area and time over target are increased, thus enhancing mission flexibility. UAVs with SATCOM control can play the role of a force multiplier to various vessels in any maritime theater with over-the-horizon ISR and target designation. Concepts of operation with maritime UAV systems will be prepared to support navy missions in war and peacetime. The role of the Maritime UAV system is to provide unmanned, long-endurance aerial reconnaissance, surveillance, and target acquisition.</p>
+                            <p class="news-text">In addition, the UAV can create a comprehensive, real-time naval tactical picture for the ship's commander and naval headquarters. Aircraft equipped with a SATCOM dish can fly to a distance limited only by the fuel quantity carried on board and the SATCOM coverage.
+                                The unmanned helicopter configuration is available at a low price and can utilize existing platforms. The VTOL UAV systems will fulfill the missions of the manned naval helicopter, mainly in dull, dirty, and dangerous missions.</p>
+                                <h5 class="news-subtitle">Unmanned Combat Aerial Vehicle (UCAV)</h5>
+                                <p class="news-text">An Unmanned Combat Aerial Vehicle is a UAV that is armed and has no pilot onboard, commonly known as a “drone.” Drones have changed the nature of modern aerial combat. Controllers of drones are in no immediate danger, unlike jet pilots. In UCAVs, much of the equipment necessary for a human pilot (such as the cockpit, ejection seat, flight controls, and environmental controls) can be omitted, resulting in a decrease in weight. This allows for greater payload, range, and maneuverability.
+                                    UCAVs are great force multipliers. In a network-centric environment where there is less response time between situational awareness, sensing, and destruction, the UCAV will be the most important weapon. UCAVs are capable of undertaking very high-risk or, typically, very high-attrition roles in which the use of manned aircraft is regarded as problematic. Current systems tend to be remotely 'piloted' by a ground controller, who is then also responsible for conducting any armed engagements. However, future concepts focus on UCAVs that can operate with higher degrees of autonomy, conducting missions with little controller influence following the input of mission information. </p>
+                            <p class="news-text">The weapons employed from a UCAV are generally conventional air-to-ground guided munitions. In the future, micro-munitions, Directed Energy Weapons, and weapons for air-to-air combat could be used by UCAVs.
+                                The vertical take-off and landing capabilities of UAVs are very suitable for maritime operations. Landing on helicopter deck-equipped ships without requiring launch and recovery equipment will be the future of UAV/UCAV operations. UAVs could either be programmed to fly an autonomous mission profile via a simple point-and-click graphical user interface or controlled manually. The vehicle is capable of carrying a variety of payloads depending on the mission. These include day and night thermal cameras (simultaneously), multi-spectral sensors, a synthetic aperture radar, a laser imaging radar, and a ground-penetrating radar. </p>
+                            <img class="news-image-small right" src="{% static '/img/para4.avif' %}" alt="Small Image">
+                            <h5 class="news-subtitle">Weapons for UAV</h5>
+                                <p class="news-text">Operational finesse can only be achieved by tuning these machines and equipment for our theater of operations. UCAVs are the machines of the future; thus, there is a need to reconfigure our doctrine and war-fighting capabilities to see how best these can be configured in the overall process. UCAVs should be capable of engaging air-to-air and air-to-surface targets. Types of weapons available worldwide that give precision, surprise, and lethality are appended below: (a) Loitering Missiles: These missiles are capable of achieving pinpoint accuracy. Loitering missiles are very effective for surgical strikes. They can be pre-programmed or controlled from the ground. (b) Laser Guided Bombs (LGBs): LGBs require high accuracy and a line of sight between the deployment platform and the target. Greater technological challenges will be to produce UCAVs that are stealthy and have high speed so that these UCAVs can shoot and scoot from the theater of operation. (c) Air-to-Air Missiles: Self-protection missiles will be required for large advanced stealthy UCAVs when operating in high-risk environments as these are very high-value platforms. High-speed and agile UCAVs would be required to conduct air-to-air engagements. </p>
+                            <p class="news-text"> These UCAVs, operating with satellite data links, could be a good replacement for Combat Air Patrol (CAP) for 'Carrier Battle Groups.' (d) Air-to-Surface Missiles: Conventional air-to-ground missiles for ISR UAVs will be required for providing greater precision and more localized effects. These will be required for advanced stealthy UCAVs. Air-to-surface missiles will ensure survivability. Large UCAVs will have an edge over the enemy when fitted with new small agile expendable UCAVs. (e) Micro Munitions: This class of weapons will be required for smaller UCAVs that demand greater stealth and high speed. Micro munitions will be smaller and lighter than conventional missiles and can also be carried internally, improving the stealth characteristics of delivering platforms. These will have applications across all types of UCAVs. The range of these munitions may be limited, reducing their suitability for platforms that stand off from the targets.</p>
+                            <img class="news-image-small right" src="{% static '/img/para2.jpg' %}" alt="Small Image">  
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar-section">
+                        <h4 class="section-title">Advertisement</h4>
+                        <div class="ad-container">
+                            <a href="#"><img class="ad-image" src="{% static '/img/para2.jpg' %}" alt="Advertisement"></a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h4 class="section-title">Trending News</h4>
+                        <div class="news-list">
+                            <div class="news-item">
+                                <img class="news-thumb" src="{% static '/img/para2.jpg' %}" alt="">
+                                <div class="news-content">
+                                    <div class="news-meta">
+                                        <a class="category" href="#">Technologies</a>
+                                        <a class="date" href="#">Jan 01, 2045</a>
+                                    </div>
+                                    <a class="news-title" href="#">BEHIND THE SCENES : HOW CODING FUELS DRONES POWER</a>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <img class="news-thumb" src="{% static '/img/para2.jpg' %}" alt="">
+                                <div class="news-content">
+                                    <div class="news-meta">
+                                        <a class="category" href="#">Technologies</a>
+                                        <a class="date" href="#">Jan 01, 2045</a>
+                                    </div>
+                                    <a class="news-title" href="#">MAKING USE OF VIDEO SURVEILLANCE TECHNOLOGY</a>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <img class="news-thumb" src="{% static '/img/para2.jpg' %}"alt="">
+                                <div class="news-content">
+                                    <div class="news-meta">
+                                        <a class="category" href="#">Technologies</a>
+                                        <a class="date" href="#">Jan 01, 2045</a>
+                                    </div>
+                                    <a class="news-title" href="#">MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</a>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <img class="news-thumb" src="{% static '/img/para2.jpg' %}" alt="">
+                                <div class="news-content">
+                                    <div class="news-meta">
+                                        <a class="category" href="#">Technologies</a>
+                                        <a class="date" href="#">Jan 01, 2045</a>
+                                    </div>
+                                    <a class="news-title" href="#">HOW TO BECOME THE NEXT TECH UNICORN</a>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <img class="news-thumb" src="{% static '/img/para2.jpg' %}" alt="">
+                                <div class="news-content">
+                                    <div class="news-meta">
+                                        <a class="category" href="#">Technologies</a>
+                                        <a class="date" href="#">Jan 01, 2045</a>
+                                    </div>
+                                    <a class="news-title" href="#">THE DOUBLE-EDGED SWORD OF ARTIFICIAL INTELLIGENCE</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="sidebar-section">
+                        <h4 class="section-title">Subscribe</h4>
+                        <div class="newsletter-container">
+                            <p>Subscribe to our channels on </p>
+                            <input type="text" class="newsletter-input" placeholder="Your Email">
+                            <button class="newsletter-button">Sign Up</button>
+                            {% comment %} <small>Lorem ipsum dolor sit amet elit</small> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</body>
+
+</html>
+
+
+
+
+
+
+{% endblock content %} 
+    

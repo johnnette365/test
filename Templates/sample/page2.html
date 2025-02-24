@@ -1,0 +1,1013 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}The double-edge sword of ARTIFICIAL INTELLIGENCE{% endblock title %} 
+
+
+{% block meta_tags %} 
+{% endblock meta_tags %}
+
+
+
+
+{% block page_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+    
+    body {
+    background-image: url("{% static 'images/back.jpg' %}");
+    }
+
+
+
+    /* General Reset */
+
+
+    h4 {
+        font-weight: bolder;
+        font-size: 1rem;
+        color:  #007bff;;
+    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    padding: 20px;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+    margin-bottom: 15%;
+    padding-top: 20%;
+    
+}
+  
+
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 20%;
+}
+
+
+
+
+
+
+
+
+.col-lg-8 {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #222;
+    font-weight: bolder;
+}
+
+a {
+    text-decoration: none;
+    color:   #007bff;;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color:rgb(83, 108, 134);
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icons h5 {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.icons i {
+    font-size: 1.2rem;
+    color: black;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.icons i:hover {
+    color: #0056b3;
+}
+
+
+.MAGAZINE-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.ad-video {
+    width: 100%;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-lg-8 {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .icons i {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .col-lg-8 {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.85rem;
+    }
+
+    .icons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+{% comment %} STORIES {% endcomment %}
+
+.STORIES {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.STORIES .card {
+    width: 100%;
+    max-width: 18rem;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-color: #fff;
+    text-align: center;
+}
+
+.STORIES .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.STORIES .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.STORIES .card-body {
+    padding: 15px;
+}
+
+.STORIES .card-body a {
+    color:  black;
+    font-size: 0.70rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.STORIES .card-body a:hover {
+    color: black;
+    text-decoration:underline;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-lg-8 {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .icons i {
+        font-size: 1rem;
+    }
+
+    .STORIES {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .col-lg-8 {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.85rem;
+    }
+
+    .icons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .STORIES .card {
+        max-width: 100%;
+    }
+}
+
+
+
+{% comment %} subscribe {% endcomment %}
+
+.newsletter {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.newsletter h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #333;
+    
+}
+
+.newsletter img {
+    width: 10%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.newsletter p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: black;
+}
+
+.newsletter .input-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.newsletter input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.newsletter button {
+    padding: 5px 5px;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+{% comment %} .newsletter button:hover {
+    background-color: #0056b3;
+} {% endcomment %}
+
+.newsletter small {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-lg-8 {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .icons i {
+        font-size: 1rem;
+    }
+
+    .STORIES {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .col-lg-8 {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.85rem;
+    }
+
+    .icons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .STORIES .card {
+        max-width: 100%;
+    }
+
+    .newsletter .input-group {
+        flex-direction: column;
+    }
+
+    .newsletter input[type="text"] {
+        width: 100%;
+    }
+}
+
+{% comment %} right mobile {% endcomment %}
+
+
+.news-card {
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 55px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    border: 5px solid black;
+}
+
+.news-card-header {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.news-card-body {
+    padding: 15px;
+    margin-top: 10%;
+}
+
+.news-card-body img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.news-card-body h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+    
+}
+
+.news-card-body .category {
+    color: #e63946;
+    font-weight: bold;
+}
+
+.news-card-body .news-description {
+    font-size: 0.95rem;
+    color: black;
+    line-height: 1.5;
+}
+
+.news-card-footer {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background-color: #f8f9fa;
+}
+
+.news-card-footer a {
+    color: #e63946;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-card-footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+{% comment %} trending item {% endcomment %}
+
+
+.Load-more {
+   
+
+    color:black;
+    padding: 5px 5px;
+    background-color:white;
+}
+
+.Load-more:hover {
+    color:#6c757d;
+    padding: 5px 5px;
+    
+}
+
+  
+    .trending-item {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        margin-bottom: 15px;
+        height: 110px;
+        border: 1px solid #ddd;
+    }
+
+    .trending-item img {
+        width: 90px;
+        height: 60px;
+        object-fit: cover;
+    }
+
+    .trending-item div {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .trending-item a {
+        color: black;
+        text-decoration: none;
+        font-size: 0.80rem;
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        .trending-item {
+            flex-direction: column;
+            height: auto;
+        }
+
+        .trending-item img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .trending-item a:hover {
+        text-decoration: underline;
+    }
+
+    .trending-item small {
+        color: #6c757d;
+    }
+
+
+
+    {% comment %}  ADD {% endcomment %}
+
+
+
+    .advertisement-section {
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        margin-bottom: 0;
+    }
+
+    .section-title h4 {
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .advertisement-content {
+        background-color: white;
+        text-align: center;
+        border: 1px solid #dee2e6;
+        border-top: 0;
+        padding: 1rem;
+    }
+
+    .advertisement-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+    {% comment %} right side stories {% endcomment %}
+
+
+    .stories-section {
+        margin-bottom: 1rem;
+    }
+
+    .stories-section h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .right-stories {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .right-card {
+        width: 10rem;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .right-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .right-card-body {
+        padding: 0.5rem;
+    }
+
+    .right-card-body a {
+        text-decoration: none;
+        color: black;
+        font-size: 0.70rem;
+        font-weight: bold;
+    }
+
+    .right-card-body a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .right-stories {
+            flex-direction: column;
+        }
+
+        .right-card {
+            width: 100%;
+        }
+    }
+
+
+
+    {% comment %} right popular article {% endcomment %}
+
+
+    .magazine-container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+      
+    }
+    
+    
+    
+    
+    .heading {
+        text-align: center;
+        color: white;
+    }
+    
+    
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        /* gap: 20px; */
+    }
+    
+    .col-md-8 {
+        flex: 2;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+        min-width: 60%;
+    }
+    
+    
+    .inner-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    
+    .article-item {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .image-container img {
+        width: 100%;
+        height: auto;
+        {% comment %} border-radius: 10px; {% endcomment %}
+        object-fit: cover;
+        margin-top: 5%;
+    
+    
+    }
+    
+    
+    
+    /* Overlay */
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .arrow-btn {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+       </style>
+
+{% endblock page_css %}
+
+
+
+{% block content %}
+
+<body>
+
+
+    <div class="container-fluid">
+        <div class="container ">
+            <div class="row" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                {% comment %} left side start {% endcomment %}
+                <div class="col-lg-8" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                    <!-- News Detail Start -->
+                    <div>
+                        <a href="">Technologies</a>
+                        <h1>The double-edge sword of ARTIFICIAL INTELLIGENCE</h1>
+                        <div>
+                            <p style="color:gray">Artificial Intelligence (AI) stands at the forefront of the Fourth Industrial Revolution, promising to revolutionize industries, enhance human capabilities, and tackle complex global challenges...</p>
+                            {% comment %} <a href="">Read the full article</a> {% endcomment %}
+                            <hr>
+                        </div>
+                        <div class="article-meta">
+                            <span>Noida | Jan 01, 2045</span>
+                            <div class="icons">
+                                <h5 class="share-title">Share:</h5>
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-square-instagram"></i>
+                            </div>
+                        </div>
+                        
+                        <img src="{% static '/img/ai.jpg' %}" class="MAGAZINE-img" alt="" style="width: 100%; height: auto;">
+                        <div>
+                            <p style="color:gray">Artificial Intelligence (AI) stands at the forefront of the Fourth Industrial Revolution, promising to revolutionize industries, enhance human capabilities, and tackle complex global challenges...</p>
+                            <hr>
+                            
+                            <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, voluptatum facere laboriosam unde blanditiis et magni, temporibus esse veniam fugiat cumque tempore expedita officiis pariatur labore laborum optio est Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, eos maxime id neque, rem ad adipisci, fuga quisquam corporis nulla soluta voluptatum sapiente possimus earum atque labore ea sed laudantium? </p>
+                            {% comment %} <a href="">Read the full article</a> {% endcomment %}
+                        </div>
+                        <video class="ad-video" autoplay muted loop style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                            <source src="{% static '/videos/video4.mp4' %}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div>
+                            <p >Artificial Intelligence (AI) stands at the forefront of the Fourth Industrial Revolution, promising to revolutionize industries, enhance human capabilities, and tackle complex global challenges.. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium velit, voluptatem dolores suscipit harum amet commodi sapiente dolorum ea inventore vitae provident enim dolor nostrum cumque odit impedit libero architecto?.</p><p   >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, voluptatum facere laboriosam unde blanditiis et magni, temporibus esse veniam fugiat cumque tempore expedita officiis pariatur labore laborum optio est Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, eos maxime id neque, rem ad adipisci, fuga quisquam corporis nulla soluta voluptatum sapiente possimus earum atque labore ea sed laudantium? </p>
+                            {% comment %} <a href="">Read the full article</a> {% endcomment %}
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <hr>
+
+                    {% comment %} wraped card {% endcomment %}
+                    <div>
+                        <h4 style="color :  #007bff;">STORIES YOU MAY LIKE</h4>
+                        <div class="STORIES">  
+                            <div class="card" style="width: 13rem;">
+                                <img src="{% static '/img/Drone2.jpg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="">MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</a>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 13rem;">
+                                <img src="{% static '/img/Drone2.jpg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="">MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</a>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 13rem;">
+                                <img src="{% static '/img/Drone2.jpg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="">MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <p >Artificial Intelligence (AI) stands at the forefront of the Fourth Industrial Revolution, promising to revolutionize industries, enhance human capabilities, and tackle complex global challenges.. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium velit, voluptatem dolores suscipit harum amet commodi sapiente dolorum ea inventore vitae provident enim dolor nostrum cumque odit impedit libero architecto?.</p><p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, voluptatum facere laboriosam unde blanditiis et magni, temporibus esse veniam fugiat cumque tempore expedita officiis pariatur labore laborum optio est Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, eos maxime id neque, rem ad adipisci, fuga quisquam corporis nulla soluta voluptatum sapiente possimus earum atque labore ea sed laudantium? </p>
+                        <a href="">Read the full article</a>
+                    </div>
+
+                    <hr>
+
+
+
+                    <div class="newsletter">
+                        
+                        <img src="{% static '/img/mail.png' %}" alt="Newsletter Image">
+                        <p>Subscribe for new launches, reviews and all that's making headlines in the tech world</p>
+                        <div class="input-group">
+                            <input type="text" placeholder="Your Email">
+                            <button>Subscribe</button>
+                        </div>
+                    </div>
+                 
+                </div>
+                {% comment %} left side end {% endcomment %}
+
+
+
+                <div class="col-lg-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px; position: -webkit-sticky; position: sticky; top: 0;">
+
+                    <div class="news-card"  >
+                        <div class="news-card-body" >
+                            <img src="{% static '/img/Drone2.jpg' %}" alt="News Image">
+                            <h4>Artificial Intelligence (AI)</h4>
+                            <p><span class="category">India</span>  2 hr ago</p>
+                            <p >Artificial Intelligence (AI) stands at the forefront of the Fourth Industrial Revolution, promising to revolutionize industries, enhance human capabilities, and tackle complex global challenges...</p>
+                        </div>
+                        <footer class="news-card-footer">
+                            <a href="#">VIEW ALL SHORTS </a>
+                        </footer>
+                    </div>
+                    <hr>
+
+
+
+                    <div class="Latest_Articles " style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                        <h4 style="color: #007bff; font-weight: bold;">Latest Articles</h4>
+                        <div >
+                            <div class="trending-item" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">         
+                                <div>  
+                                    <a href="">BEHIND THE SCENES : HOW CODING FUELS DRONES POWER</a>
+                                    <div> 
+                                        <a href=""><small>Jan 01, 2045</small></a>
+                                    </div>
+                                </div>
+                                <img src="{% static '/img/coding.jpg' %}" alt="">
+                            </div>
+                            <div class="trending-item" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                                <div>   
+                                    <a href="">
+                                        MAKING USE OF VIDEO SURVEILLANCE TECHNOLOGY</a>
+                                    <div>          
+                                        <a href=""><small>Jan 01, 2045</small></a>
+                                    </div>
+                                </div>
+                                <img src="{% static '/img/VideoSurveillance.jpg' %}" alt="">
+                            </div>
+                            <div class="trending-item" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                                <div>   
+                                    <a href="">PARADIGM SHIFT IN MARITIME WARFARE</a>
+                                    <div>
+                                        <a href=""><small>Jan 01, 2045</small></a>
+                                    </div>
+                                </div>
+                                <img src="{% static '/img/PARADIGM.jpg' %}" alt="">
+                            </div>
+                            <div class="trending-item" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                                <div>   
+                                    <a href="">HOW TO BECOME THE NEXT TECH UNICORN</a>
+                                    <div>
+                                        <a href=""><small>Jan 01, 2045</small></a>
+                                    </div>
+                                </div>
+                                <img src="{% static '/img/unicorn.jpg' %}" alt="">
+                            </div>
+                            
+                            
+                            <input type="submit" value="Load more >" class="Load-more"><br>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+                    <div class="advertisement-section" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                        <div class="section-title">
+                            <h4 style="color :  #007bff;">Advertisement</h4>
+                        </div>
+                        <div class="advertisement-content">
+                            <a href=""><img src="{% static '/img/PARADIGM.jpg' %}" alt="Advertisement"></a>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                    <div class="stories-section">
+                        <h4 style="color :  #007bff;"> Top STORIES </h4>
+                        <div class="right-stories" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">  
+                            <div class="right-card">
+                                <img src="{% static '/img/Drone2.jpg' %}" alt="Story Image">
+                                <div class="right-card-body">
+                                    <a href="">MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</a>
+                                </div>
+                            </div>
+                            <div class="right-card">
+                                <img src="{% static '/img/Drone2.jpg' %}" alt="Story Image">
+                                <div class="right-card-body">
+                                    <a href="">MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</a>
+                                </div>
+                            </div>
+                            
+                            <div class="right-card">
+                                <img src="{% static '/img/Drone2.jpg' %}" alt="Story Image">
+                                <div class="right-card-body">
+                                    <a href="">MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</a>
+                                </div>
+                            </div>
+                            <div class="right-card">
+                                <img src="{% static '/img/Drone2.jpg' %}" alt="Story Image">
+                                <div class="right-card-body">
+                                    <a href="">MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                    <div class="Popular-articles" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <h4 style="color :  #007bff;">POPULAR POST </h4>
+                        <div class="article-item ">
+                            <div class="image-container" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                <img src="{% static '/img/AIStartups.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>TOP 10 AI STARTUPS OF INDIA 2025</small>
+                            </a>
+                        </div>
+                        <hr>
+                        
+                        <div class="article-item ">
+                            <div class="image-container" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                <img src="{% static '/img/coding.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>BEHIND THE SCENES : HOW CODING FUELS DRONES POWER</small>
+                            </a>
+                        </div>
+                        <hr>
+                        
+                        <div class="article-item ">
+                            <div class="image-container" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                <img src="{% static '/img/Drone.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>Drones with Artificial Intelligence: Navigating Tech’s New Frontier</small>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+
+                   
+
+
+
+
+
+
+
+
+
+                </div> 
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+<script src="js/main.js"></script>
+
+</body>
+{% endblock content %} 

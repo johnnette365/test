@@ -1,0 +1,1655 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}Home{% endblock title %} 
+
+
+{% block meta_tags %} 
+{% endblock meta_tags %}
+
+{% block page_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jacquard+24&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=GFS+Didot&family=Jacquard+12&family=Jacquard+24&display=swap" rel="stylesheet">
+<style>
+   
+
+
+        
+
+    .banner-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+        
+    .banner-container video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+         min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        object-fit: cover;
+    }
+        
+    .banner-text {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        text-align: start;
+        background-image: linear-gradient(to bottom, #f0fdf4, #4338ca, #d97706);
+        background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent; 
+       border-radius: 10px;
+        
+        
+    }
+        
+    .banner-text h1 {
+        font-size: 2.5rem;
+        margin: 0;
+    }
+        
+    .banner-text p {
+        font-size: 1.2rem;
+    }
+        
+    @media (max-width: 768px) {
+        .banner-text h1 {
+            font-size: 1.8rem;
+        }
+        
+        .banner-text p {
+             font-size: 1rem;
+        }
+    }
+        
+    @media (max-width: 480px) {
+        .banner-text h1 {
+            font-size: 1.5rem;
+        }
+        
+        .banner-text p {
+            font-size: 0.9rem;
+        }
+    }
+
+/* {% comment %} video {% endcomment %} */
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+    .video-container {
+        /* position: relative; */
+        width: 500px;
+        cursor: pointer;
+    }
+
+    .video-container img {
+        width: 100%;
+        display: block;
+    }
+
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 60px;
+        cursor: pointer;
+    }
+
+    .fullscreen-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .fullscreen-video video {
+        width: 50%;
+        height: auto;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 50px;
+        right: 60px;
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+    }
+
+    /* ============== arrow buttons ============= */
+    .arrow-button {
+        font-size: 40px;
+        font-weight: bold;
+        /* padding: 10px 20px; */
+        padding: 0px 0px;
+        border: none;
+        background: transparent;
+        color: rgb(0, 102, 255);
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* ========== Left Button ======== */
+    .left-arrows span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateX(10px);
+        animation: left-slideArrows 1s infinite linear;
+    }
+
+    .left-arrows span:nth-child(1) { animation-delay: 0.4s; }
+    .left-arrows span:nth-child(2) { animation-delay: 0.2s; }
+    .left-arrows span:nth-child(3) { animation-delay: 0s; }
+
+    @keyframes left-slideArrows {
+        0% { opacity: 0; transform: translateX(10px); }
+        50% { opacity: 1; transform: translateX(0px); }
+        100% { opacity: 0; transform: translateX(-10px); }
+    }
+
+
+    /* ========== Right Button ======== */
+    .right-arrows span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateX(-10px);
+        animation: right-slideArrows 1s infinite linear;
+    }
+
+    .right-arrows span:nth-child(1) { animation-delay: 0s; }
+    .right-arrows span:nth-child(2) { animation-delay: 0.2s; }
+    .right-arrows span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes right-slideArrows {
+        0% { opacity: 0; transform: translateX(-10px); }
+        50% { opacity: 1; transform: translateX(0); }
+        100% { opacity: 0; transform: translateX(10px); }
+    }
+
+
+
+
+
+
+
+#btn1 {
+  /* If used as an overlay on a video container, use absolute positioning */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* background: rgba(0, 0, 0, 0.7);  */
+  /* semi-transparent black background */
+  padding: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color:rgb(54, 13, 13);
+  text-align: center;
+  border-radius: 0%;
+}
+
+
+
+
+.btn-content{
+transform: translateY(50%);
+transition: transform  linear .3s;
+}
+
+#btn1:hover .btn-content{
+transform: translateY(0%);
+}
+
+
+.box
+{
+background-color: rgb(255, 0, 0);
+width: 170px;
+border: 5px solid white;
+padding: 5px;
+margin: 5px;
+transform: skew(-16deg);
+transition: background-color 0.3s ease;        
+}
+.box:hover {
+    color:white;
+    background: blue;
+  }
+  span1{
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(10px);
+                animation: right-slideArrows 1s infinite linear;
+    }
+    box:focus {     
+        background-color:rgb(54, 157, 226);    
+    }
+/* #span1{
+display: inline-block;
+opacity: 0;
+transform: translateX(10px);
+        animation: right-slideArrows 1s infinite linear;
+} */
+
+    
+
+
+
+
+
+ /*first card */
+    
+    
+h5 {
+    font-family: "IM Fell English", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.20rem;
+}
+
+ .card {
+    width: 90%;
+    max-width: 900px; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2% auto; 
+    display: flex;
+    flex-direction: column;
+}
+
+
+.card-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.card-body {
+    padding: 20px;
+}
+
+
+.card-title {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+
+.card-text {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 12px;
+    font-family: "IM Fell English", serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+
+.card-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.card-footer {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+@media screen and (max-width: 1024px) {
+    .card {
+        width: 95%;
+    }
+    
+    .card-title {
+        font-size: 1.8rem;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 95%;
+        margin-top: 3%;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+
+    h5 {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 98%;
+        margin-top: 4%;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+}
+
+    
+
+    /* second box */
+
+
+    .secondbox {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 16px; 
+    justify-content: center; 
+    padding: 20px; 
+}
+
+
+.secondcard {
+    width: 21rem; 
+    max-width: 100%; 
+    border: 1px solid #ddd;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px; 
+}
+
+
+.box-img {
+    width: 100%;
+    height: 350px; 
+    object-fit: cover;
+    display: block;
+}
+
+
+.box-body {
+    padding: 16px;
+}
+
+
+.box-text {
+    font-size: 1.20rem;
+    color: #666;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-family: "IM Fell English", serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+
+.box-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .secondcard {
+        width: 18rem; 
+    }
+
+    .box-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .secondbox {
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .secondcard {
+        width: 90%; 
+    }
+
+    .box-img {
+        height: 300px;
+    }
+
+    .box-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .secondcard {
+        width: 95%;
+    }
+
+    .box-img {
+        height: 250px;
+    }
+
+    .box-body {
+        padding: 12px;
+    }
+
+    .box-text {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+    /* 3rd box left */
+
+
+.thrdbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content:space-around; 
+    padding: 20px;
+}
+
+
+.thrdboxcard {
+    width: 400px; 
+    max-width: 100%; 
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-radius: 8px; 
+}
+
+
+.thrdboxcard:hover {
+    transform: translateY(-5px);
+}
+
+
+.thrdbox-img {
+    width: 100%;
+    height: auto;
+    max-height: 500px; 
+    object-fit: cover;
+    display: block;
+}
+
+
+.thrdbox-body {
+    padding: 15px;
+}
+
+
+.thrdbox-body a {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    text-decoration: underline;
+}
+
+
+.thrdbox-body a:hover {
+    color: #42586f;
+}
+
+.thrdbox-text {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-family: "IM Fell English", serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+
+.thrdbox-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.card-footer {
+    font-size: 12px;
+    color: #999;
+    border-top: 1px solid #eee;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+
+
+
+
+/* Top title */
+.top-title {
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-family: "IM Fell English", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    border: 3px solid red;
+}
+
+
+.sticky-box {
+    position: sticky;
+    top: 2rem;
+    width: 100%;
+}
+
+
+.custom-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.card-cover {
+    background-image: url('{% static "img/Drone2.jpg" %}');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px 20px 20px;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+}
+
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+
+
+    font-family: "IM Fell English", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .thrdbox-img {
+        max-height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .thrdbox-img {
+        max-height: 250px; 
+    }
+}
+@media (max-width: 1024px) {
+    .thrdbox {
+        gap: 15px; 
+    }
+
+    .thrdboxcard {
+        width: 100%; 
+        max-width: 90%;
+    }
+
+    .thrdbox-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .thrdbox {
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .thrdboxcard {
+        width: 90%;
+    }
+
+    .thrdbox-img {
+        height: auto;
+    }
+
+    .thrdbox-text {
+        font-size: 1rem;
+    }
+
+    .sidebar {
+        max-width: 100%; 
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-cover {
+        padding: 2rem 1rem;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .thrdboxcard {
+        width: 95%;
+    }
+
+    .thrdbox-img {
+        height: auto;
+    }
+
+    .thrdbox-body {
+        padding: 12px;
+    }
+
+    .thrdbox-text {
+        font-size: 0.9rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-footer {
+        font-size: 0.75rem;
+    }
+
+    .sidebar {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
+
+
+/* top banner */
+.banner-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+        
+    .banner-container video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+         min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        object-fit: cover;
+    }
+
+    
+        
+    .banner-text {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        text-align: start;
+        background-image: linear-gradient(to bottom, #f0fdf4, #4338ca, #d97706);
+        background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent; 
+       border-radius: 10px;
+
+
+
+       
+        
+        
+    }
+        
+    .banner-text h1 {
+        font-size: 4.5rem;
+        margin: 0;
+
+        font-family: "Bodoni Moda", serif;
+        font-optical-sizing: auto;
+        font-weight: 400; 
+        font-style: normal;
+
+            
+
+        
+    }
+        
+    .banner-text p {
+        font-size: 1.2rem;
+        font-family: VogueAvantGarde, helvetica, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+
+    }
+            
+    @media (max-width: 768px) {
+        .banner-text h1 {
+            font-size: 1.8rem;
+        }
+        
+        .banner-text p {
+             font-size: 1rem;
+        }
+    }
+        
+    @media (max-width: 480px) {
+        .banner-text h1 {
+            font-size: 1.5rem;
+        }
+        
+        .banner-text p {
+            font-size: 0.9rem;
+        }
+    }
+
+
+    /* title on image */
+    .FUTURE-TECH {
+    position: relative;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+}
+
+
+.image-section video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+
+.content {
+    position: absolute;
+    top: 60%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%; 
+    max-width: 600px; 
+}
+
+
+.subtext {
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+
+.btn {
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #333;
+    color: white;
+}
+
+@media screen and (max-width: 1024px) {
+    .content {
+        top: 65%;
+        width: 90%;
+    }
+
+    .subtext {
+        font-size: 13px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .content {
+        top: 50%;
+        width: 85%;
+        padding: 15px;
+    }
+
+    .subtext {
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .content {
+        top: 50%;
+        width: 90%;
+        padding: 10px;
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+
+    .subtext {
+        font-size: 11px;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}
+
+
+/* subscribe */
+        .subscription-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            justify-content: center;
+            
+        }
+        .magazine-cover img {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .text {
+            font-size: 1.20rem;
+            font-family: VogueAvantGarde, helvetica, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        
+
+
+        
+        }
+        .subscribe-btn {
+            background: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .subscribe-btn:hover {
+            background: #333;
+        }
+
+        /* ADD */
+
+        .ad-container {
+    position: relative;
+    width: 100%;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Dark overlay to enhance text visibility */
+.ad-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Background Image */
+.ad-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+/* Content inside the ad */
+.ad-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 20px;
+}
+
+/* Title Styling */
+.ad-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* Subtitle Text */
+.ad-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* CTA Button */
+.ad-btn {
+    background: #ff5733;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.ad-btn:hover {
+    background: #c70039;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 1024px) {
+    .ad-container {
+        min-height: 50vh;
+    }
+
+    .ad-title {
+        font-size: 2rem;
+    }
+
+    .ad-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ad-container {
+        min-height: 45vh;
+    }
+
+    .ad-title {
+        font-size: 1.8rem;
+    }
+
+    .ad-text {
+        font-size: 1rem;
+    }
+
+    .ad-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ad-container {
+        min-height: 40vh;
+        padding: 10px;
+    }
+
+    .ad-title {
+        font-size: 1.5rem;
+    }
+
+    .ad-text {
+        font-size: 0.9rem;
+    }
+
+    .ad-btn {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+}
+
+
+</style>
+{% endblock page_css %} 
+
+
+
+{% comment %} banner {% endcomment %}
+{% block content %}
+<div class="banner-container">
+    <video autoplay loop muted>
+        <source src="{% static '/videos/video1.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="banner-text">
+        <h1>INTRODUCING Future Technologies Magazine</h1>
+        <p class="banner-p">Volume 1 | Issue 1</p>
+    </div>
+</div>
+
+
+
+<div class="ad-thumbnail-video-container;" >
+    <div class="ad-thumbnail" style="display: flex; padding: 0 10px; gap: 20px; align-items: center; margin-top: 100px;">
+        <div class="btn-l">
+            <button class="arrow-button">
+                <span class="left-arrows" style="display: flex;">
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                </span>
+            </button>
+        </div>
+         <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="ad-1">
+                        <div class="video-container" onclick="openVideo1()" style="width: 100%;">
+                            <img src="{% static '/img/ad1.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
+                            <button class="play-button">▶</button>
+                            <div class="container" id="btn1">
+                                <div class="info-slide">
+                                    <div class="btn-content">
+                                        <h4 style=" margin-bottom: 20px; color: white; text-align: left; padding: 0 50px 0 0;">Advertisement</h4>
+                                        <div class="box">Watch Now&nbsp;&nbsp;<span1><i class="fas fa-chevron-right"></i></span1>
+                                            <span1><i class="fas fa-chevron-right"></i></span1>
+                                            <span1><i class="fas fa-chevron-right"></i></span1>
+
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                 
+                 
+                <div class="swiper-slide">
+                    <div class="ad-2">
+                        <div class="video-container" onclick="openVideo2()" style="width: 100%;">
+                            <img src="{% static '/img/ad2.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
+                            <button class="play-button">▶</button>
+                            <div class="container" id="btn1">
+                                <div class="info-slide">
+                                    <div class="btn-content">
+                                        <h4 style=" margin-bottom: 20px; color: white; text-align: left; padding: 0 50px 0 0;">Advertisement</h4>
+                                        <div class="box">Watch Now &nbsp;&nbsp;<span1><i class="fas fa-chevron-right"></i></span1>
+                                            <span1><i class="fas fa-chevron-right"></i></span1>
+                                            <span1><i class="fas fa-chevron-right"></i></span1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="ad-2">
+                        <div class="video-container" onclick="openVideo2()" style="width: 100%;">
+                            <img src="{% static '/img/ad2.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
+                            <button class="play-button">▶</button>
+                            <div class="container" id="btn1">
+                                <div class="info-slide">
+                                    <div class="btn-content">
+                                        <h4 style=" margin-bottom: 20px; color: white; text-align: left; padding: 0 50px 0 0;">Advertisement</h4>
+                                        <div class="box">Watch Now &nbsp;&nbsp;<span1><i class="fas fa-chevron-right"></i></span1>
+                                            <span1><i class="fas fa-chevron-right"></i></span1>
+                                            <span1><i class="fas fa-chevron-right"></i></span1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+             
+            </div>
+        </div>
+        <div class="btn-r">
+            <button class="arrow-button">
+                <span class="right-arrows" style="display: flex;">
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                </span>
+            </button>
+        </div>  
+    </div>
+    <div class="ad-video-box">
+        <div class="ad-video-1">
+            <div class="fullscreen-video1 fullscreen-video" id="fullscreenVideo1" style="z-index: 2;">
+                <span class="close-button" onclick="closeVideo1()">&times;</span>
+                <video id="videoPlayer" controls>
+                    <source src="{% static '/videos/ad1.mp4' %}" type="video/mp4">                  
+                </video>
+            </div>
+        </div>
+        <div class="ad-video-2">
+            <div class="fullscreen-video2 fullscreen-video" id="fullscreenVideo2" style="z-index: 2;">
+                <span class="close-button" onclick="closeVideo2()">&times;</span>
+                <video id="videoPlayer" controls>
+                    <source src="{% static '/videos/ad2.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="ad-video-3">
+            <div class="fullscreen-video3 fullscreen-video" id="fullscreenVideo3" style="z-index: 2;">
+                <span class="close-button" onclick="closeVideo3()">&times;</span>
+                <video id="videoPlayer" controls>
+                    <source src="{% static '/videos/ad3.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="ad-video-4">
+            <div class="fullscreen-video4 fullscreen-video" id="fullscreenVideo4" style="z-index: 2;">
+                <span class="close-button" onclick="closeVideo4()">&times;</span>
+                <video id="videoPlayer" controls>
+                    <source src="{% static '/videos/ad4.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card">
+    <h3 class=" top-title pb-4 mb-4 border-bottom">
+        ARTICLES
+     </h3>
+    <img src="{% static '/img/ai.jpg' %}" alt="Card Image" class="card-img">
+    <div class="card-body">
+        <a href="">Technologies</a>
+        <h5 class="card-title">THE DOUBLE-EDGED SWORD 
+            OF ARTIFICIAL INTELLIGENCE</h5>
+            <a href="{% url 'page2' %}" target="_blank"> <p class="card-text">
+            Artificial Intelligence is a groundbreaking innovation, transforming industries and redefining human potential. However, its dual nature brings both opportunities and challenges that society must navigate wisely.
+        </p>
+    </a>
+        <p class="card-footer">Last updated 3 mins ago</p>
+    </div>
+</div>
+
+
+
+
+<div class="secondbox">
+    <div class="secondcard">
+        <img src="{% static '/img/coding.jpg' %}" alt="Card Image" class="box-img">
+        <div class="box-body">
+            <a href="">Technologies</a>
+            <h5 class="title">BEHIND THE SCENE: HOW 
+                CODING FUELS DRONE POWER</h5>
+
+            <p class="box-text">Making the Impossible Possible : The 
+                Power of Coding and the Drones.
+                 </p>
+            <p class="card-footer">Last updated 3 mins ago</p>
+        </div>
+    </div>
+
+    <div class="secondcard">
+        <img src="{% static '/img/top-10.avif' %}" alt="Card Image" class="box-img">
+        <div class="box-body">
+            <a href="">Technologies</a>
+            <h5 class="title">TOP 10 AI STARTUPS OF 
+                INDIA 2025</h5>
+            <p class="box-text">Considering age, last year’s revenue,
+                type of technology and reviews</p>
+            <p class="card-footer">Last updated 3 mins ago</p>
+        </div>
+    </div>
+
+    <div class="secondcard">
+        <img src="{% static '/img/Drone2.jpg' %}" alt="Card Image" class="box-img">
+        <div class="box-body">
+            <a href="">Technologies</a>
+            <h5 class="title">DRONES WITH ARTIFICIAL 
+                INTELLIGENCE</h5>
+            <p class="box-text">Drone technology is the integration
+                of artificial intelligence (AI)</p>
+            <p class="card-footer">Last updated 3 mins ago</p>
+        </div>
+    </div>
+
+    <div class="secondcard">
+        <img src="{% static '/img/VideoSurveillance.jpg' %}" alt="Card Image" class="box-img">
+        <div class="box-body">
+            <a href="">Technologies</a>
+            <h5 class="title">MAKING USE OF VIDEO 
+                SURVEILLANCE TECHNOLOGY 
+                TO GAIN RETAIL MARKETING</h5>
+            <p class="box-text">The advent of advanced video 
+                surveillance technology has 
+                revolutionized the retail industry</p>
+            <p class="card-footer">Last updated 3 mins ago</p>
+        </div>
+    </div>
+</div>
+
+<!-- advertise -->
+<div class="ad-container">
+    <!-- Background Image -->
+    <img src="{% static '/img/add.png' %}" class="ad-bg" alt="Advertisement Image">
+    <div class="ad-content">
+        <h1 class="ad-title">Exclusive Fashion Collection</h1>
+        <p class="ad-text">Discover the latest trends and elevate your style with our premium designs.</p>
+        <button class="ad-btn">Shop Now</button>
+    </div>
+</div>
+
+
+
+
+<div class="row g-5">
+    <div class="col-md-7">
+        <h3 class=" top-title pb-4 mb-4 border-bottom">
+           Recent Post
+        </h3>
+
+
+
+        
+        <div class="thrdbox">
+
+            <div class="thrdboxcard">
+                <img src="{% static '/img/PARADIGM.jpg' %}" alt="Card Image" class="thrdbox-img" style="height: 300px;">
+                <div class="thrdbox-body">
+                    <a href="">Technologies</a>
+                    <h5 class="title">PARADIGM SHIFT IN MARITIME
+                        WARFARE</h5>
+                        <a href="{% url 'singlepage' %}" target="_blank"> <p class="thrdbox-text">
+                            The degree of maritime supremacy, where the opposing force is incapable of effective interference, will change with the role of 
+                              Unmanned Combat Aerial Vehicles (UCAVs)
+                          </p>
+                        </a>
+                    <p class="card-footer">Last updated 3 mins ago</p>
+                </div>
+            </div>
+
+            <div class="thrdboxcard">
+                <img src="{% static '/img/tech_unicorn.jpg' %}" alt="Card Image" class="thrdbox-img" style="height: 500px;">
+                <div class="thrdbox-body">
+                    <a href="">Technologies</a>
+                    <h5 class="title">HOW TO BECOME THE NEXT TECH
+                        UNICORN</h5>
+                    <p class="thrdbox-text">Key steps and considerations that can help tech 
+                        startups navigate the complex journey towards 
+                        becoming the next unicorn</p>
+                    <p class="card-footer">Last updated 3 mins ago</p>
+                </div>
+            </div>
+
+
+            <div class="thrdboxcard">
+                <img src="{% static '/img/cyber.png' %}" alt="Card Image" class="thrdbox-img" style="height: 500px;">
+                <div class="thrdbox-body">
+                    <a href="">Technologies</a>
+                    <h5 class="title">CYBER THREATS TO AVIATION,
+                        SPACE AND NEED FOR RESILIENCE</h5>
+                    <p class="thrdbox-text">Cyber attacks pose a real threat to these two
+                        mediums, as well as to others, such as the 
+                       Internet of Things. </p>
+                    <p class="card-footer">Last updated 3 mins ago</p>
+                </div>
+            </div>
+
+            <div class="thrdboxcard">
+                <img src="{% static '/img/automusic.jpg' %}" alt="Card Image" class="thrdbox-img" style="height: 300px;">
+                <div class="thrdbox-body">
+                    <a href="">Technologies</a>
+                    <h5 class="title"> MUSIC ON AUTOPILOT</h5>
+                    <p class="thrdbox-text">The rise of artificial intelligence has transformed 
+                        countless industries, and the music world is no 
+                        exception.</p>
+                    <p class="card-footer">Last updated 3 mins ago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="col-md-5">
+        <div class="thrdboxcard sticky-box">
+            <img src="{% static '/img/future_drone.jpg' %}" alt="Card Image" class="thrdbox-img" style="height: 500px;">
+            <div class="thrdbox-body">
+                <a href="">Technologies</a>
+                <h5 class="title"> TOP 11 FUTURE MILITARY DRONES</h5>
+                <p class="thrdbox-text">The top 11 drones redefining 
+                    military strategy and technological superiority</p>
+                <p class="card-footer">Last updated 3 mins ago</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="FUTURE-TECH">
+    <div class="image-section">
+        <video autoplay loop muted playsinline>
+            <source src="{% static '/videos/video2.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="content">
+        <h5>FUTURE TECH 2025</h5>
+        <p class="subtext">YOUR GETWAY TO UNPRECEDENTED INNOVATION AND GLOBAL NETWORKING</p>
+        <H5>FUTURE TECH SUMMIT </H5>
+        <p class="subtext">20 March, 2025 in New Delhi</p>
+        <a href="{% url 'articles' %}" target="_blank">
+            <button class="btn">KNOW MORE</button>
+          </a>
+          
+    </div>
+</div>
+
+
+
+<div class="subscription-container">
+    <div class="magazine-cover">
+        <img src="{% static '/img/magazine.jpg' %}" alt="Vogue Magazine Cover">
+    </div>
+    <div class="text">FT-
+        FUTURE  TECHNOLOGIES</div>
+        <a href="{% url 'subscribe' %}" target="_blank">
+            <button class="btn">Subscribe</button>
+          </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function openVideo1() {
+        document.getElementById("fullscreenVideo1").style.display = "flex";
+        document.getElementById("videoPlayer1").play();
+    }
+    function closeVideo1() {
+        document.getElementById("fullscreenVideo1").style.display = "none";
+        document.getElementById("videoPlayer1").pause();
+    }
+
+
+    function openVideo2() {
+        document.getElementById("fullscreenVideo2").style.display = "flex";
+        document.getElementById("videoPlayer2").play();
+    }
+    function closeVideo2() {
+        document.getElementById("fullscreenVideo2").style.display = "none";
+        document.getElementById("videoPlayer2").pause();
+    }
+
+
+    function openVideo3() {
+        document.getElementById("fullscreenVideo3").style.display = "flex";
+        document.getElementById("videoPlayer3").play();
+    }
+    function closeVideo3() {
+        document.getElementById("fullscreenVideo3").style.display = "none";
+        document.getElementById("videoPlayer3").pause();
+    }
+
+
+    function openVideo4() {
+        document.getElementById("fullscreenVideo4").style.display = "flex";
+        document.getElementById("videoPlayer4").play();
+    }
+    function closeVideo4() {
+        document.getElementById("fullscreenVideo4").style.display = "none";
+        document.getElementById("videoPlayer4").pause();
+    }
+   
+    function toggleColor(element) {
+      element.classList.toggle('Watch now');
+    }
+
+
+
+
+
+    
+</script>
+
+
+{% endblock content %}
+
+
+
+
+{% block page_js %}
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".btn-r",
+            prevEl: ".btn-l",
+             nextEl: ".swiper-button-next",
+             prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+           autoplay: {
+           delay: 2500,
+             disableOnInteraction: false,
+        },
+        loop: true,
+        });
+
+
+
+
+
+        
+
+
+    </script>
+   
+{% endblock page_js %}
+
+

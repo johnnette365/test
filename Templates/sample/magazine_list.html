@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Magazines</h2>
+<ul>
+    {% for magazine in magazines %}
+        <li>
+            <a href="{% url 'magazine_detail' magazine.slug %}">{{ magazine.title }}</a>
+            <p>Published on: {{ magazine.published_at }}</p>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'magazine_create' %}">Create New Magazine</a>
+{% endblock %}

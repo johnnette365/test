@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ magazine.title }}</h2>
+<p>By {{ magazine.author }}</p>
+{% if magazine.cover_image %}
+    <img src="{{ magazine.cover_image.url }}" alt="{{ magazine.title }}">
+{% endif %}
+{% if magazine.cover_video %}
+    <video controls>
+        <source src="{{ magazine.cover_video.url }}" type="video/mp4">
+    </video>
+{% endif %}
+<p>Published on: {{ magazine.published_at }}</p>
+
+<h3>Comments</h3>
+<ul>
+    {% for comment in comments %}
+        <li><strong>{{ comment.user }}</strong>: {{ comment.content }}</li>
+    {% endfor %}
+</ul>
+
+{% if user.is_authenticated %}
+    <form action="{% url 'add_comment' magazine.slug %}" method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">Add Comment</button>
+    </form>
+{% else %}
+    <p><a href="{% url 'login' %}">Login</a> to comment.</p>
+{% endif %}
+
+{% endblock %}
